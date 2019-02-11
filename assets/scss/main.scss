@@ -1,0 +1,552 @@
+@import "variables.scss";
+
+body, html 
+{
+    margin: 0;
+    padding: 0;
+    background: $primaryColor;
+}
+
+.animated
+{
+    transition: .4s;
+}
+
+.unselectable
+{
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.hidden 
+{
+    display: none !important;
+}
+
+
+main 
+{
+    section 
+    {
+        height: 100vh;
+        width: 100vw;
+        color: white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .grid
+    {
+        display: grid;
+    }
+
+    .btn 
+    {
+        border-radius: 5px;
+        padding: 17px 12px;
+        transition: .3s;
+        border: 0;
+        margin-bottom: 20px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 500;
+
+        &:hover 
+        {
+            transition: .3s;
+        }
+    }
+
+    section, .StartScreen 
+    {
+        background: $primaryColor;
+        font-family: $basic;
+
+        .container 
+        {
+            width: 440px;
+            padding: 0 40px;
+            height: auto;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+
+            .grid 
+            {
+                grid-template-columns: 1fr;
+                grid-template-rows: 130px 190px 20px;
+
+                .logo
+                {
+                    text-transform: uppercase;
+                    font-size: 60px;
+
+                    .upper 
+                    {
+                        font-weight: 300;
+                        letter-spacing: 1px;
+
+                        .thicker
+                        {
+                            font-weight: 700;
+                        }
+
+                        .index
+                        {
+                            font-size: 18px;
+                            font-weight: 800;
+                            vertical-align: text-top;
+                            line-height: 3.2;
+                        }
+                    }
+
+                    .downer
+                    {
+                        font-weight: 700;
+                        font-size: 14.5px;
+                        margin-top: -12px;
+                        margin-left: 3px;
+
+                        .lighter 
+                        {
+                            font-weight: 400 !important;
+                        }
+                    }
+                }
+
+                .menu 
+                {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    grid-template-rows: 1fr;
+
+                    .firstScreen
+                    {
+                        display: flex;
+                        height: 100%;
+                        width: 440px;
+                        position: absolute;
+                        flex-direction: column;
+                        text-transform: uppercase;
+                        justify-self: center;
+                        z-index: 9;
+
+                        .howToPlayBtn
+                        {
+                            background: $redBgColor;
+                            color: $primaryColor;
+
+                            &:hover{
+                                background: darken($redBgColor, 20%);
+                            }
+                        }
+
+                        .startBtn
+                        {
+                            background: $blueBgColor;
+                            color: $primaryColor;
+
+                            &:hover{
+                                background: darken($blueBgColor, 10%);
+                            }
+                        }
+                    }
+
+                    .secondScreen
+                    {
+                        display: flex;
+                        flex-direction: column;
+                        width: 440px;
+                        position: absolute;
+                        text-transform: uppercase;
+                        opacity: 0;
+                        animation-delay: 300ms;
+
+                        p 
+                        {
+                            font-size: 20px;
+                            font-weight: 300;
+                            margin: 0 0 5px 0;
+                        }
+
+                        .btnGroup
+                        {
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+
+                            button:nth-child(1)
+                            {
+                                border-top-right-radius: 0;
+                                border-bottom-right-radius: 0;
+                                font-size: 14px;
+                            }
+
+                            button:nth-child(2)
+                            {
+                                border-top-left-radius: 0;
+                                border-bottom-left-radius: 0;
+                                font-size: 14px;
+                            }
+
+                            button 
+                            {
+                                padding: 10px 12px !important;
+                                background: $blueBgColor;
+                                color: $primaryColor;
+
+                                &:hover 
+                                {
+                                    background: darken($blueBgColor, 10%);
+                                }
+                            }
+
+                            .active
+                            {
+                                background: darken($blueBgColor, 20%);
+                            }
+                        }
+
+                        .group:nth-child(2)
+                        {
+                            margin-bottom: 20px;
+                        }
+
+                        .startBtn
+                        {
+                            background: $greenBgColor;
+                            color: $primaryColor;
+                            font-weight: 600 !important;
+
+                            &:hover
+                            {
+                                background: darken($greenBgColor, 10%);
+                            }
+                        }
+                    }
+                }
+
+                .scroll
+                {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 999;
+
+                    .element
+                    {
+                        background: white;
+                        opacity: .4;
+                        border-radius: 50px;
+                        height: 10px;
+                        width: 10px;
+                        margin: 0 3px;
+                        cursor: pointer;
+                    }
+
+                    .active
+                    {
+                        opacity: .9;
+                        height: 13px;
+                        width: 13px;
+                        transition: .3s;
+                    }
+                }
+            }
+        }
+    }
+
+    section, .MainScreen
+    {
+        display: grid;
+        grid-template-rows: 70px 1fr 30px;
+        height: 100vh;
+        opacity: 0;
+
+        .header 
+        {
+            background: rgba(255,255,255,.13);
+
+            .headerContainer
+            {
+                width: 100%;
+                height: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+
+                .flex 
+                {
+                    display: flex;
+                }
+
+                .newGame
+                {
+                    padding-left: 70px;
+                    align-self: top;
+                    justify-self: flex-start;
+                    align-self: center;
+                    text-transform: uppercase;
+                    font-size: 17px;
+                    font-weight: 300;
+
+                    p 
+                    {
+                        padding-left: 10px;
+                    }
+
+                    @media only screen and (max-width: 790px)
+                    {
+                        p 
+                        {
+                            display: none;
+                        }
+                    }
+
+                    opacity: .7;
+                    transition: .3s;
+                    cursor: pointer;
+
+                    &:hover 
+                    {
+                        opacity: 1;
+                        transition: .3s;
+                    }
+                }
+
+                .mineCounter 
+                {
+                    align-self: center;
+                    justify-self: center;
+
+                    display: grid;
+                    font-size: 18px;
+                    grid-template-columns: 34px 1fr;
+                    grid-gap: 8px;
+
+                    .stat 
+                    {
+                        font-size: 24px;
+                        justify-self: right;
+                    }
+
+                    .constant 
+                    {
+                        .text 
+                        {
+                            font-weight: 300;
+                            vertical-align: top;
+                            line-height: 1.7;
+                        }
+
+                        .num 
+                        {
+                            font-size: 24px;
+                        }
+                    }
+                }
+
+                .settings 
+                {
+                    justify-self: flex-end;
+                    padding-right: 60px;
+                    align-self: center;
+                    text-transform: uppercase;
+                    font-size: 17px;
+                    font-weight: 300;
+
+                    p 
+                    {
+                        padding-right: 10px;
+                    }
+
+                    @media only screen and (max-width: 790px)
+                    {
+                        p 
+                        {
+                            display: none;
+                        }
+                    }
+
+                    opacity: .7;
+                    transition: .3s;
+                    cursor: pointer;
+
+                    &:hover 
+                    {
+                        opacity: 1;
+                        transition: .3s;
+                    }
+                }
+
+                svg 
+                {
+                    width: 25px;
+                }
+            }
+
+            .timer 
+            {
+
+            }
+        }
+
+        .content 
+        {
+            justify-self: center;
+            align-self: center;
+
+            .grid
+            {
+                display: grid;
+                grid-gap: 8px;
+
+                .field 
+                {
+                    border-radius: 7px;
+                }
+
+                .field-9 
+                {
+                    width: 60px;
+                    height: 60px;
+                }
+
+                .field-16 
+                {
+                    width: 40px;
+                    height: 40px;
+
+                    border-radius: 5px;
+                }
+
+                @media only screen and (max-width: 604px), (max-height: 604px)
+                {
+                    
+                }
+
+                .unrevealed 
+                {
+                    background: $fieldColor;
+                    cursor: pointer;
+                    transition: .3s;
+
+                    &:hover 
+                    {
+                        background: darken($fieldColor, 10%);
+                        transition: .3s;
+                    }
+                }
+
+                .empty 
+                {
+                    background: rgba(118,118,118,.25);
+                    cursor: not-allowed;
+                }
+
+                .number 
+                {
+                    background: rgba(118,118,118,.40);
+                    cursor: not-allowed;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    
+                    p 
+                    {
+                        font-size: 21px;
+                        font-weight: 500;
+                        text-align: center;
+                        margin: 0;
+                    }
+                }
+
+                .flag 
+                {
+                    background: $flagColor;
+                    display: flex;
+                    justify-content: center;
+                    cursor: crosshair;
+                    transition: .3s;
+
+                    svg 
+                    {
+                        color: rgba(0,0,0,.7);
+                        width: 40%;
+                    }
+
+                    &:hover 
+                    {
+                        transition: .3s;
+                        background: darken($flagColor, 20%);
+                        
+                        svg 
+                        {
+                            color: rgba(0,0,0,.80);
+                        }
+                    }
+                }
+
+                .mine 
+                {
+                    background: $mineColor;
+                    display: flex;
+                    justify-content: center;
+                    cursor: not-allowed;
+
+                    svg 
+                    {
+                        color: rgba(0,0,0,.7);
+                        width: 50%;
+                    }
+                }  
+            }
+
+            .s9
+            {
+                grid-template-columns: repeat(9, 1fr);
+                grid-template-rows: repeat(9, 1fr);
+            }
+
+            .s16
+            {
+                grid-template-columns: repeat(16, 1fr);
+                grid-template-rows: repeat(16, 1fr);
+            }
+        }
+
+        .footer 
+        {
+            align-self: center;
+            justify-self: center;
+
+            p 
+            {
+                font-size: 15px;
+                font-weight: 300;
+                text-transform: uppercase;
+                margin: 0;
+
+                .bolder 
+                {
+                    font-weight: bold;
+                }
+
+                .index 
+                {
+                    font-size: 7px;
+                    font-weight: bold;
+                    vertical-align: text-top;
+                    line-height: 2;
+                }
+
+                .copyright 
+                {
+                    text-transform: none;
+                }
+            }
+        }
+    }
+}

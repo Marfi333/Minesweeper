@@ -1,0 +1,536 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand|Raleway|Roboto|Source+Sans+Pro");
+body, html {
+  margin: 0;
+  padding: 0;
+  background: #010101;
+}
+
+.animated {
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.unselectable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+main section {
+  height: 100vh;
+  width: 100vw;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+main .grid {
+  display: -ms-grid;
+  display: grid;
+}
+
+main .btn {
+  border-radius: 5px;
+  padding: 17px 12px;
+  -webkit-transition: .3s;
+  transition: .3s;
+  border: 0;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+main .btn:hover {
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+main section, main .StartScreen {
+  background: #010101;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main section .container, main .StartScreen .container {
+  width: 440px;
+  padding: 0 40px;
+  height: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+}
+
+main section .container .grid, main .StartScreen .container .grid {
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 130px 190px 20px;
+      grid-template-rows: 130px 190px 20px;
+}
+
+main section .container .grid .logo, main .StartScreen .container .grid .logo {
+  text-transform: uppercase;
+  font-size: 60px;
+}
+
+main section .container .grid .logo .upper, main .StartScreen .container .grid .logo .upper {
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+main section .container .grid .logo .upper .thicker, main .StartScreen .container .grid .logo .upper .thicker {
+  font-weight: 700;
+}
+
+main section .container .grid .logo .upper .index, main .StartScreen .container .grid .logo .upper .index {
+  font-size: 18px;
+  font-weight: 800;
+  vertical-align: text-top;
+  line-height: 3.2;
+}
+
+main section .container .grid .logo .downer, main .StartScreen .container .grid .logo .downer {
+  font-weight: 700;
+  font-size: 14.5px;
+  margin-top: -12px;
+  margin-left: 3px;
+}
+
+main section .container .grid .logo .downer .lighter, main .StartScreen .container .grid .logo .downer .lighter {
+  font-weight: 400 !important;
+}
+
+main section .container .grid .menu, main .StartScreen .container .grid .menu {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+}
+
+main section .container .grid .menu .firstScreen, main .StartScreen .container .grid .menu .firstScreen {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  width: 440px;
+  position: absolute;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-transform: uppercase;
+  justify-self: center;
+  z-index: 9;
+}
+
+main section .container .grid .menu .firstScreen .howToPlayBtn, main .StartScreen .container .grid .menu .firstScreen .howToPlayBtn {
+  background: #E99F8F;
+  color: #010101;
+}
+
+main section .container .grid .menu .firstScreen .howToPlayBtn:hover, main .StartScreen .container .grid .menu .firstScreen .howToPlayBtn:hover {
+  background: #d8563a;
+}
+
+main section .container .grid .menu .firstScreen .startBtn, main .StartScreen .container .grid .menu .firstScreen .startBtn {
+  background: #6AACD4;
+  color: #010101;
+}
+
+main section .container .grid .menu .firstScreen .startBtn:hover, main .StartScreen .container .grid .menu .firstScreen .startBtn:hover {
+  background: #4296c9;
+}
+
+main section .container .grid .menu .secondScreen, main .StartScreen .container .grid .menu .secondScreen {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 440px;
+  position: absolute;
+  text-transform: uppercase;
+  opacity: 0;
+  -webkit-animation-delay: 300ms;
+          animation-delay: 300ms;
+}
+
+main section .container .grid .menu .secondScreen p, main .StartScreen .container .grid .menu .secondScreen p {
+  font-size: 20px;
+  font-weight: 300;
+  margin: 0 0 5px 0;
+}
+
+main section .container .grid .menu .secondScreen .btnGroup, main .StartScreen .container .grid .menu .secondScreen .btnGroup {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+main section .container .grid .menu .secondScreen .btnGroup button:nth-child(1), main .StartScreen .container .grid .menu .secondScreen .btnGroup button:nth-child(1) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  font-size: 14px;
+}
+
+main section .container .grid .menu .secondScreen .btnGroup button:nth-child(2), main .StartScreen .container .grid .menu .secondScreen .btnGroup button:nth-child(2) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  font-size: 14px;
+}
+
+main section .container .grid .menu .secondScreen .btnGroup button, main .StartScreen .container .grid .menu .secondScreen .btnGroup button {
+  padding: 10px 12px !important;
+  background: #6AACD4;
+  color: #010101;
+}
+
+main section .container .grid .menu .secondScreen .btnGroup button:hover, main .StartScreen .container .grid .menu .secondScreen .btnGroup button:hover {
+  background: #4296c9;
+}
+
+main section .container .grid .menu .secondScreen .btnGroup .active, main .StartScreen .container .grid .menu .secondScreen .btnGroup .active {
+  background: #307ba8;
+}
+
+main section .container .grid .menu .secondScreen .group:nth-child(2), main .StartScreen .container .grid .menu .secondScreen .group:nth-child(2) {
+  margin-bottom: 20px;
+}
+
+main section .container .grid .menu .secondScreen .startBtn, main .StartScreen .container .grid .menu .secondScreen .startBtn {
+  background: #98DC78;
+  color: #010101;
+  font-weight: 600 !important;
+}
+
+main section .container .grid .menu .secondScreen .startBtn:hover, main .StartScreen .container .grid .menu .secondScreen .startBtn:hover {
+  background: #79d250;
+}
+
+main section .container .grid .scroll, main .StartScreen .container .grid .scroll {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 999;
+}
+
+main section .container .grid .scroll .element, main .StartScreen .container .grid .scroll .element {
+  background: white;
+  opacity: .4;
+  border-radius: 50px;
+  height: 10px;
+  width: 10px;
+  margin: 0 3px;
+  cursor: pointer;
+}
+
+main section .container .grid .scroll .active, main .StartScreen .container .grid .scroll .active {
+  opacity: .9;
+  height: 13px;
+  width: 13px;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+main section, main .MainScreen {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 70px 1fr 30px;
+      grid-template-rows: 70px 1fr 30px;
+  height: 100vh;
+  opacity: 0;
+}
+
+main section .header, main .MainScreen .header {
+  background: rgba(255, 255, 255, 0.13);
+}
+
+main section .header .headerContainer, main .MainScreen .header .headerContainer {
+  width: 100%;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+}
+
+main section .header .headerContainer .flex, main .MainScreen .header .headerContainer .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main section .header .headerContainer .newGame, main .MainScreen .header .headerContainer .newGame {
+  padding-left: 70px;
+  -ms-flex-item-align: top;
+      -ms-grid-row-align: top;
+      align-self: top;
+  justify-self: flex-start;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-transform: uppercase;
+  font-size: 17px;
+  font-weight: 300;
+  opacity: .7;
+  -webkit-transition: .3s;
+  transition: .3s;
+  cursor: pointer;
+}
+
+main section .header .headerContainer .newGame p, main .MainScreen .header .headerContainer .newGame p {
+  padding-left: 10px;
+}
+
+@media only screen and (max-width: 790px) {
+  main section .header .headerContainer .newGame p, main .MainScreen .header .headerContainer .newGame p {
+    display: none;
+  }
+}
+
+main section .header .headerContainer .newGame:hover, main .MainScreen .header .headerContainer .newGame:hover {
+  opacity: 1;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+main section .header .headerContainer .mineCounter, main .MainScreen .header .headerContainer .mineCounter {
+  -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  display: -ms-grid;
+  display: grid;
+  font-size: 18px;
+  -ms-grid-columns: 34px 1fr;
+      grid-template-columns: 34px 1fr;
+  grid-gap: 8px;
+}
+
+main section .header .headerContainer .mineCounter .stat, main .MainScreen .header .headerContainer .mineCounter .stat {
+  font-size: 24px;
+  -ms-grid-column-align: right;
+      justify-self: right;
+}
+
+main section .header .headerContainer .mineCounter .constant .text, main .MainScreen .header .headerContainer .mineCounter .constant .text {
+  font-weight: 300;
+  vertical-align: top;
+  line-height: 1.7;
+}
+
+main section .header .headerContainer .mineCounter .constant .num, main .MainScreen .header .headerContainer .mineCounter .constant .num {
+  font-size: 24px;
+}
+
+main section .header .headerContainer .settings, main .MainScreen .header .headerContainer .settings {
+  justify-self: flex-end;
+  padding-right: 60px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-transform: uppercase;
+  font-size: 17px;
+  font-weight: 300;
+  opacity: .7;
+  -webkit-transition: .3s;
+  transition: .3s;
+  cursor: pointer;
+}
+
+main section .header .headerContainer .settings p, main .MainScreen .header .headerContainer .settings p {
+  padding-right: 10px;
+}
+
+@media only screen and (max-width: 790px) {
+  main section .header .headerContainer .settings p, main .MainScreen .header .headerContainer .settings p {
+    display: none;
+  }
+}
+
+main section .header .headerContainer .settings:hover, main .MainScreen .header .headerContainer .settings:hover {
+  opacity: 1;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+main section .header .headerContainer svg, main .MainScreen .header .headerContainer svg {
+  width: 25px;
+}
+
+main section .content, main .MainScreen .content {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+main section .content .grid, main .MainScreen .content .grid {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 8px;
+}
+
+main section .content .grid .field, main .MainScreen .content .grid .field {
+  border-radius: 7px;
+}
+
+main section .content .grid .field-9, main .MainScreen .content .grid .field-9 {
+  width: 60px;
+  height: 60px;
+}
+
+main section .content .grid .field-16, main .MainScreen .content .grid .field-16 {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+main section .content .grid .unrevealed, main .MainScreen .content .grid .unrevealed {
+  background: #767676;
+  cursor: pointer;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+main section .content .grid .unrevealed:hover, main .MainScreen .content .grid .unrevealed:hover {
+  background: #5d5d5d;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+main section .content .grid .empty, main .MainScreen .content .grid .empty {
+  background: rgba(118, 118, 118, 0.25);
+  cursor: not-allowed;
+}
+
+main section .content .grid .number, main .MainScreen .content .grid .number {
+  background: rgba(118, 118, 118, 0.4);
+  cursor: not-allowed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main section .content .grid .number p, main .MainScreen .content .grid .number p {
+  font-size: 21px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0;
+}
+
+main section .content .grid .flag, main .MainScreen .content .grid .flag {
+  background: #E4CC46;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: crosshair;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+main section .content .grid .flag svg, main .MainScreen .content .grid .flag svg {
+  color: rgba(0, 0, 0, 0.7);
+  width: 40%;
+}
+
+main section .content .grid .flag:hover, main .MainScreen .content .grid .flag:hover {
+  -webkit-transition: .3s;
+  transition: .3s;
+  background: #ab9519;
+}
+
+main section .content .grid .flag:hover svg, main .MainScreen .content .grid .flag:hover svg {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+main section .content .grid .mine, main .MainScreen .content .grid .mine {
+  background: #E42312;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: not-allowed;
+}
+
+main section .content .grid .mine svg, main .MainScreen .content .grid .mine svg {
+  color: rgba(0, 0, 0, 0.7);
+  width: 50%;
+}
+
+main section .content .s9, main .MainScreen .content .s9 {
+  -ms-grid-columns: (1fr)[9];
+      grid-template-columns: repeat(9, 1fr);
+  -ms-grid-rows: (1fr)[9];
+      grid-template-rows: repeat(9, 1fr);
+}
+
+main section .content .s16, main .MainScreen .content .s16 {
+  -ms-grid-columns: (1fr)[16];
+      grid-template-columns: repeat(16, 1fr);
+  -ms-grid-rows: (1fr)[16];
+      grid-template-rows: repeat(16, 1fr);
+}
+
+main section .footer, main .MainScreen .footer {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+main section .footer p, main .MainScreen .footer p {
+  font-size: 15px;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+main section .footer p .bolder, main .MainScreen .footer p .bolder {
+  font-weight: bold;
+}
+
+main section .footer p .index, main .MainScreen .footer p .index {
+  font-size: 7px;
+  font-weight: bold;
+  vertical-align: text-top;
+  line-height: 2;
+}
+
+main section .footer p .copyright, main .MainScreen .footer p .copyright {
+  text-transform: none;
+}
+/*# sourceMappingURL=main.css.map */
