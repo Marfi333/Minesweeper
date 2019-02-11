@@ -57,24 +57,30 @@ class Game
 
         for ( let i = 0; i < _minesCount; i++ )
         {
-            let coord;
-            let inArray = false;
+            let coord = new Coordinates( this.rand( 0, _mapSize-1 ), this.rand( 0, _mapSize-1 ) );
+            let inArray = true;
 
-            /*do
+            while ( inArray )
             {
-                coord = new Coordinates( this.rand( 0, _mapSize-1 ), this.rand( 0, _mapSize-1 ) );
+                let has = false;
 
-                mines.forEach( item => {
-                    if ( item.equals( coord ) )
-                        inArray = true;
-                });
-            }
-            while ( inArray );*/
+                try 
+                {
+                    mines.forEach( item => {
+                        if ( item.equals( coord ) )
+                        {
+                            has = true;
+                            throw "break";
+                        }
+                    });
+                }
+                catch( e ) {}
 
-            while ( !inArray )
-            {
-                coord = new Coordinates( this.rand( 0, _mapSize-1 ), this.rand( 0, _mapSize-1 ) );
-                if ( !mines.includes(coord) )
+                if ( has )
+                {
+                    coord = new Coordinates( this.rand( 0, _mapSize-1 ), this.rand( 0, _mapSize-1 ) );
+                }
+                else 
                 {
                     inArray = false;
                 }
