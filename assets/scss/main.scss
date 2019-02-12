@@ -7,11 +7,6 @@ body, html
     background: $primaryColor;
 }
 
-.animated
-{
-    transition: .4s;
-}
-
 .unselectable
 {
     -webkit-user-select: none;
@@ -23,9 +18,22 @@ body, html
     display: none !important;
 }
 
+.blurred 
+{
+    filter: blur(5px);
+    transition: .4s;
+}
+
 
 main 
 {
+    filter: blur(0px);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+
     section 
     {
         height: 100vh;
@@ -234,7 +242,7 @@ main
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    z-index: 999;
+                    z-index: 99;
 
                     .element
                     {
@@ -318,8 +326,9 @@ main
 
                 .mineCounter 
                 {
-                    align-self: center;
+                    align-self: flex-start;
                     justify-self: center;
+                    padding-top: 12px;
 
                     display: grid;
                     font-size: 18px;
@@ -348,7 +357,7 @@ main
                     }
                 }
 
-                .settings 
+                .pause 
                 {
                     justify-self: flex-end;
                     padding-right: 60px;
@@ -389,7 +398,71 @@ main
 
             .timer 
             {
+                position: relative;
+                width: 242px;
+                height: auto;
+                z-index: 99999;
+                left: 50%;
+                transform: translateX(-50%);
+                top: -20px;
 
+                .tContainer 
+                {
+                    display: grid;
+                    grid-template-columns: 70px 16px 70px 16px 70px;
+                    grid-template-rows: 70px;
+
+                    .holder 
+                    {
+                        background: white;
+                        border-radius: 5px;
+                        color: black;
+                        padding: 5px;
+                        display: flex;
+                        flex-direction: column;
+
+                        p 
+                        {
+                            margin: 0;
+                            text-align: center;
+                        }
+
+                        .label 
+                        {
+                            text-transform: uppercase;
+                            font-size: 10px;
+                        }
+
+                        .data 
+                        {
+                            font-size: 47px;
+                            font-weight: 600;
+                            margin-top: -11px;
+                        }
+                    }
+
+                    .separator 
+                    {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+
+                        .dot 
+                        {
+                            width: 6px;
+                            height: 6px;
+                            border-radius: 10px;
+                            background: white;
+                        }
+
+                        .dot:nth-child(1)
+                        {
+                            margin-bottom: 5px;
+                        }
+                    }
+                }
             }
         }
 
@@ -398,10 +471,25 @@ main
             justify-self: center;
             align-self: center;
 
+            .bg 
+            {
+                user-select: none;
+                z-index: 999;
+            }
+
+            .fg 
+            {
+                z-index: 9999;
+            }
+
             .grid
             {
                 display: grid;
                 grid-gap: 8px;
+                position: absolute;
+                top: 51%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-49%);
 
                 .field 
                 {
@@ -416,15 +504,46 @@ main
 
                 .field-16 
                 {
-                    width: 40px;
-                    height: 40px;
+                    width: 38px;
+                    height: 38px;
 
                     border-radius: 5px;
                 }
 
-                @media only screen and (max-width: 604px), (max-height: 604px)
+                @media only screen and (max-width: 630px), (max-height: 850px)
                 {
-                    
+                    .field-9 
+                    {
+                        width: 50px;
+                        height: 50px;
+                    }
+                }
+
+                @media only screen and (max-width: 530px), (max-height: 750px)
+                {
+                    .field-9 
+                    {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+
+                @media only screen and (max-width: 830px), (max-height: 960px)
+                {
+                    .field-16
+                    {
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+
+                @media only screen and (max-width: 750px), (max-height: 842px)
+                {
+                    .field-16
+                    {
+                        width: 26px;
+                        height: 26px;
+                    }
                 }
 
                 .unrevealed 
@@ -547,6 +666,278 @@ main
                     text-transform: none;
                 }
             }
+        }
+    }
+}
+
+blur 
+{
+    background: rgba(0,0,0,.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+}
+
+alert 
+{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background: white;
+    z-index: 99999;
+    border-radius: 10px;
+    font-family: $basic;
+    opacity: 0;
+}
+
+#pause
+{
+    width: 600px;
+    height: auto;
+    display: flex;
+    padding: 30px 40px;
+    opacity: 0;
+
+    svg 
+    {
+        width: 120px;
+        padding-right: 50px;
+    }
+
+    .container 
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+
+        p 
+        {
+            font-size: 35px;
+            margin: 0 0 10px 0;
+        }
+
+        button 
+        {
+            border-radius: 5px;
+            padding: 10px 25px;
+            transition: .3s;
+            margin-bottom: 6px;
+            border: 0;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: lighter;
+            background: $blueBtnColor;
+            color: white;
+            width: 200px;
+
+            &:hover 
+            {
+                transition: .3s;
+                background: darken($blueBtnColor, 10);
+            }
+        }
+    }
+}
+
+#newGame 
+{
+    width: 600px;
+    height: auto;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+    svg 
+    {
+        color: $questionColor;
+        width: 110px;
+        margin-bottom: 20px;
+    }
+
+    .text 
+    {
+        text-align: center;
+
+        .title
+        {
+            font-size: 35px;
+            margin: 0;
+        }
+
+        .subtitle
+        {
+            font-size: 18px;
+            margin: 0 0 30px 0;
+        }
+    }
+
+    .buttonHolder 
+    {
+        button 
+        {
+            border-radius: 5px;
+            padding: 13px 25px;
+            transition: .3s;
+            margin-bottom: 6px;
+            border: 0;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: lighter;
+            background: $blueBtnColor;
+            color: white;
+            width: 200px;
+
+            &:hover 
+            {
+                transition: .3s;
+                background: darken($blueBtnColor, 10);
+            }
+        }
+
+        .new 
+        {
+            margin-right: 10px;
+        }
+
+        .cancel 
+        {
+            background: $redBtnColor;
+            width: 100px;
+
+            &:hover 
+            {
+                transition: .3s;
+                background: darken($redBtnColor, 10);
+            }
+        }
+    }
+}
+
+#dead 
+{
+    width: 600px;
+    height: auto;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+    svg 
+    {
+        color: $redBtnColor;
+        width: 110px;
+        margin-bottom: 20px;
+    }
+
+    .text 
+    {
+        text-align: center;
+
+        .title
+        {
+            font-size: 35px;
+            margin: 0;
+        }
+
+        .subtitle
+        {
+            font-size: 18px;
+            margin: 0 0 30px 0;
+        }
+    }
+
+    .buttonHolder 
+    {
+        button 
+        {
+            border-radius: 5px;
+            padding: 13px 25px;
+            transition: .3s;
+            margin-bottom: 6px;
+            border: 0;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: lighter;
+            background: $blueBtnColor;
+            color: white;
+            width: 300px;
+
+            &:hover 
+            {
+                transition: .3s;
+                background: darken($blueBtnColor, 10);
+            }
+        }
+
+        .new 
+        {
+            margin-right: 10px;
+        }
+    }
+}
+
+#won 
+{
+    width: 600px;
+    height: auto;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+    svg 
+    {
+        color: $medalColor;
+        width: 110px;
+        margin-bottom: 20px;
+    }
+
+    .text 
+    {
+        text-align: center;
+
+        .title
+        {
+            font-size: 35px;
+            margin: 0 0 30px 0;
+        }
+    }
+
+    .buttonHolder 
+    {
+        button 
+        {
+            border-radius: 5px;
+            padding: 13px 25px;
+            transition: .3s;
+            margin-bottom: 6px;
+            border: 0;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: lighter;
+            background: $blueBtnColor;
+            color: white;
+            width: 300px;
+
+            &:hover 
+            {
+                transition: .3s;
+                background: darken($blueBtnColor, 10);
+            }
+        }
+
+        .new 
+        {
+            margin-right: 10px;
         }
     }
 }
