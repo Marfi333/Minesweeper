@@ -21,6 +21,23 @@ body, html {
   display: none !important;
 }
 
+.blurred {
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+main {
+  -webkit-filter: blur(0px);
+          filter: blur(0px);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
 main section {
   height: 100vh;
   width: 100vw;
@@ -231,7 +248,7 @@ main section .container .grid .scroll, main .StartScreen .container .grid .scrol
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  z-index: 999;
+  z-index: 99;
 }
 
 main section .container .grid .scroll .element, main .StartScreen .container .grid .scroll .element {
@@ -315,10 +332,10 @@ main section .header .headerContainer .newGame:hover, main .MainScreen .header .
 }
 
 main section .header .headerContainer .mineCounter, main .MainScreen .header .headerContainer .mineCounter {
-  -ms-grid-row-align: center;
-      align-self: center;
+  align-self: flex-start;
   -ms-grid-column-align: center;
       justify-self: center;
+  padding-top: 12px;
   display: -ms-grid;
   display: grid;
   font-size: 18px;
@@ -343,7 +360,7 @@ main section .header .headerContainer .mineCounter .constant .num, main .MainScr
   font-size: 24px;
 }
 
-main section .header .headerContainer .settings, main .MainScreen .header .headerContainer .settings {
+main section .header .headerContainer .pause, main .MainScreen .header .headerContainer .pause {
   justify-self: flex-end;
   padding-right: 60px;
   -ms-flex-item-align: center;
@@ -358,17 +375,17 @@ main section .header .headerContainer .settings, main .MainScreen .header .heade
   cursor: pointer;
 }
 
-main section .header .headerContainer .settings p, main .MainScreen .header .headerContainer .settings p {
+main section .header .headerContainer .pause p, main .MainScreen .header .headerContainer .pause p {
   padding-right: 10px;
 }
 
 @media only screen and (max-width: 790px) {
-  main section .header .headerContainer .settings p, main .MainScreen .header .headerContainer .settings p {
+  main section .header .headerContainer .pause p, main .MainScreen .header .headerContainer .pause p {
     display: none;
   }
 }
 
-main section .header .headerContainer .settings:hover, main .MainScreen .header .headerContainer .settings:hover {
+main section .header .headerContainer .pause:hover, main .MainScreen .header .headerContainer .pause:hover {
   opacity: 1;
   -webkit-transition: .3s;
   transition: .3s;
@@ -376,6 +393,84 @@ main section .header .headerContainer .settings:hover, main .MainScreen .header 
 
 main section .header .headerContainer svg, main .MainScreen .header .headerContainer svg {
   width: 25px;
+}
+
+main section .header .timer, main .MainScreen .header .timer {
+  position: relative;
+  width: 242px;
+  height: auto;
+  z-index: 99999;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  top: -20px;
+}
+
+main section .header .timer .tContainer, main .MainScreen .header .timer .tContainer {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 70px 16px 70px 16px 70px;
+      grid-template-columns: 70px 16px 70px 16px 70px;
+  -ms-grid-rows: 70px;
+      grid-template-rows: 70px;
+}
+
+main section .header .timer .tContainer .holder, main .MainScreen .header .timer .tContainer .holder {
+  background: white;
+  border-radius: 5px;
+  color: black;
+  padding: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main section .header .timer .tContainer .holder p, main .MainScreen .header .timer .tContainer .holder p {
+  margin: 0;
+  text-align: center;
+}
+
+main section .header .timer .tContainer .holder .label, main .MainScreen .header .timer .tContainer .holder .label {
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+main section .header .timer .tContainer .holder .data, main .MainScreen .header .timer .tContainer .holder .data {
+  font-size: 47px;
+  font-weight: 600;
+  margin-top: -11px;
+}
+
+main section .header .timer .tContainer .separator, main .MainScreen .header .timer .tContainer .separator {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+main section .header .timer .tContainer .separator .dot, main .MainScreen .header .timer .tContainer .separator .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 10px;
+  background: white;
+}
+
+main section .header .timer .tContainer .separator .dot:nth-child(1), main .MainScreen .header .timer .tContainer .separator .dot:nth-child(1) {
+  margin-bottom: 5px;
 }
 
 main section .content, main .MainScreen .content {
@@ -386,10 +481,27 @@ main section .content, main .MainScreen .content {
       align-self: center;
 }
 
+main section .content .bg, main .MainScreen .content .bg {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  z-index: 999;
+}
+
+main section .content .fg, main .MainScreen .content .fg {
+  z-index: 9999;
+}
+
 main section .content .grid, main .MainScreen .content .grid {
   display: -ms-grid;
   display: grid;
   grid-gap: 8px;
+  position: absolute;
+  top: 51%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-49%);
+          transform: translateX(-50%) translateY(-49%);
 }
 
 main section .content .grid .field, main .MainScreen .content .grid .field {
@@ -532,5 +644,271 @@ main section .footer p .index, main .MainScreen .footer p .index {
 
 main section .footer p .copyright, main .MainScreen .footer p .copyright {
   text-transform: none;
+}
+
+blur {
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+}
+
+alert {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+  background: white;
+  z-index: 99999;
+  border-radius: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  opacity: 0;
+}
+
+#pause {
+  width: 600px;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 30px 40px;
+  opacity: 0;
+}
+
+#pause svg {
+  width: 120px;
+  padding-right: 50px;
+}
+
+#pause .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#pause .container p {
+  font-size: 35px;
+  margin: 0 0 10px 0;
+}
+
+#pause .container button {
+  border-radius: 5px;
+  padding: 10px 25px;
+  -webkit-transition: .3s;
+  transition: .3s;
+  margin-bottom: 6px;
+  border: 0;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: lighter;
+  background: #3085D6;
+  color: white;
+  width: 200px;
+}
+
+#pause .container button:hover {
+  -webkit-transition: .3s;
+  transition: .3s;
+  background: #236bb0;
+}
+
+#newGame {
+  width: 600px;
+  height: auto;
+  padding: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#newGame svg {
+  color: #E99001;
+  width: 110px;
+  margin-bottom: 20px;
+}
+
+#newGame .text {
+  text-align: center;
+}
+
+#newGame .text .title {
+  font-size: 35px;
+  margin: 0;
+}
+
+#newGame .text .subtitle {
+  font-size: 18px;
+  margin: 0 0 30px 0;
+}
+
+#newGame .buttonHolder button {
+  border-radius: 5px;
+  padding: 13px 25px;
+  -webkit-transition: .3s;
+  transition: .3s;
+  margin-bottom: 6px;
+  border: 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: lighter;
+  background: #3085D6;
+  color: white;
+  width: 200px;
+}
+
+#newGame .buttonHolder button:hover {
+  -webkit-transition: .3s;
+  transition: .3s;
+  background: #236bb0;
+}
+
+#newGame .buttonHolder .new {
+  margin-right: 10px;
+}
+
+#newGame .buttonHolder .cancel {
+  background: #DD3333;
+  width: 100px;
+}
+
+#newGame .buttonHolder .cancel:hover {
+  -webkit-transition: .3s;
+  transition: .3s;
+  background: #bd2020;
+}
+
+#dead {
+  width: 600px;
+  height: auto;
+  padding: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#dead svg {
+  color: #DD3333;
+  width: 110px;
+  margin-bottom: 20px;
+}
+
+#dead .text {
+  text-align: center;
+}
+
+#dead .text .title {
+  font-size: 35px;
+  margin: 0;
+}
+
+#dead .text .subtitle {
+  font-size: 18px;
+  margin: 0 0 30px 0;
+}
+
+#dead .buttonHolder button {
+  border-radius: 5px;
+  padding: 13px 25px;
+  -webkit-transition: .3s;
+  transition: .3s;
+  margin-bottom: 6px;
+  border: 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: lighter;
+  background: #3085D6;
+  color: white;
+  width: 300px;
+}
+
+#dead .buttonHolder button:hover {
+  -webkit-transition: .3s;
+  transition: .3s;
+  background: #236bb0;
+}
+
+#dead .buttonHolder .new {
+  margin-right: 10px;
+}
+
+#won {
+  width: 600px;
+  height: auto;
+  padding: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#won svg {
+  color: #78A811;
+  width: 110px;
+  margin-bottom: 20px;
+}
+
+#won .text {
+  text-align: center;
+}
+
+#won .text .title {
+  font-size: 35px;
+  margin: 0 0 30px 0;
+}
+
+#won .buttonHolder button {
+  border-radius: 5px;
+  padding: 13px 25px;
+  -webkit-transition: .3s;
+  transition: .3s;
+  margin-bottom: 6px;
+  border: 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: lighter;
+  background: #3085D6;
+  color: white;
+  width: 300px;
+}
+
+#won .buttonHolder button:hover {
+  -webkit-transition: .3s;
+  transition: .3s;
+  background: #236bb0;
+}
+
+#won .buttonHolder .new {
+  margin-right: 10px;
 }
 /*# sourceMappingURL=main.css.map */

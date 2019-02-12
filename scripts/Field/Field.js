@@ -25,7 +25,7 @@ class Field
         ];
     }
 
-    createElement( num )
+    createElement( num, event, dt )
     {
         if ( this.TYPE === null )
             throw "Type cannot be null";
@@ -34,19 +34,26 @@ class Field
             element.classList.add( "field" );
             element.classList.add( `field-${this.SIZE}` );
             element.classList.add( this.TYPE );
-            element.dataset.x = this.COORDINATES.getX();
-            element.dataset.y = this.COORDINATES.getY();
-            element.dataset.type = this.TYPE;
-            element.addEventListener( "click", fieldAction );
-            element.addEventListener( "contextmenu", fieldAction );
-            element.addEventListener( "press", fieldAction );
+            
+            if ( dt === undefined )
+            {
+                element.dataset.x = this.COORDINATES.getX();
+                element.dataset.y = this.COORDINATES.getY();
+                element.dataset.type = this.TYPE;
+            }
+            
+            if ( event )
+            {
+                element.addEventListener( "click", fieldAction );
+                element.addEventListener( "contextmenu", fieldAction );
+                element.addEventListener( "press", fieldAction );
+            }
 
             element.classList.add("animated");
-            element.style.animationDuration = "0.5s";
+            element.style.animationDuration = "0.2s";
 
-        if ( num !== undefined )
+        if ( num !== undefined && num !== null )
         {
-            console.log(3);
             let p = document.createElement( "p" );
             p.innerText = num
 
@@ -76,7 +83,7 @@ class Field
     {
         let Node;
 
-        _container.childNodes[1].childNodes.forEach( node => {
+        _container.childNodes[0].childNodes.forEach( node => {
             if( node.dataset.x == _coord.getX() && node.dataset.y == _coord.getY() )
             {
                 //console.log(node);
@@ -94,7 +101,7 @@ class Field
 
         let Node = [];
 
-        _container.childNodes[1].childNodes.forEach( node => {
+        _container.childNodes[0].childNodes.forEach( node => {
             if ( node.dataset.type == _type )
             {
                 Node.push( node );
@@ -103,4 +110,9 @@ class Field
 
         return Node;
     }
+
+    static FLAG() 
+    {
+        return '<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="flag-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-flag-alt fa-w-16 fa-9x"><path fill="currentColor" d="M32 0C14.3 0 0 14.3 0 32v464c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V32C64 14.3 49.7 0 32 0zm430.6 4.2C291.3 91.5 305.4-62.2 96 32.4V384c185.7-92.2 221.7 53.3 397.5-23.1 11.4-5 18.5-16.5 18.5-28.8V30.8c0-25.1-26.8-38.1-49.4-26.6z" class=""></path></svg>';
+    };
 }
